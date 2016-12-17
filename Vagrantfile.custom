@@ -1,5 +1,6 @@
 Vagrant.configure("2") do |config|
 
+   config.vm.box = "casept-VAGRANTSLASH-lubuntu-16.04"
    config.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
      vb.gui = true
