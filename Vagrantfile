@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
      #Clean up the drive 
      sudo apt-get clean
      cat /dev/null > ~/.bash_history && history -c
-     sudo dd if=/dev/zero of=/EMPTY bs=1M
+     sudo dd if=/dev/zero of=/EMPTY bs=1M || true
      sudo rm -f /EMPTY
    SHELL
 end
