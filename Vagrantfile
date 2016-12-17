@@ -85,11 +85,14 @@ Vagrant.configure("2") do |config|
      apt install -y --force-yes lxde-core lxtask lxrandr lxterminal xserver-xorg-video-all virtualbox-guest-x11 virtualbox-guest-dkms pulseaudio lightdm
      #Setup autologin
      sudo usermod -a -G nopasswdlogin ubuntu 
-#     sudo usermod -a -G autologin ubuntu 
      sudo echo "[Seat:*]" >> /usr/share/lightdm/lightdm.conf.d/50-autologin.conf
      sudo echo "autologin-user=ubuntu" >> /usr/share/lightdm/lightdm.conf.d/50-autologin.conf
      sudo echo "autologin-user-timeout=0" >> /usr/share/lightdm/lightdm.conf.d/50-autologin.conf 
      sudo dpkg-reconfigure lightdm 
+     #Clean up the drive 
      sudo apt-get clean
+     cat /dev/null > ~/.bash_history && history -c
+     sudo dd if=/dev/zero of=/EMPTY bs=1M
+     sudo rm -f /EMPTY
    SHELL
 end
